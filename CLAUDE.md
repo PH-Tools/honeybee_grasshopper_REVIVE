@@ -4,7 +4,7 @@ The **Grasshopper UI layer** for Honeybee-REVIVE — the Rhino/Grasshopper compo
 
 > Research/testing only. Not affiliated with, reviewed, or approved by Phius.
 
-> **Runtime constraint (critical):** the component code in `honeybee_revive_rhino/` runs under **IronPython 2.7** (Rhino's GHPython interpreter). Heavy compute (ADORB, pandas-based resilience) can't run in IPy2.7 — it is shelled out to CPython via `honeybee_revive_rhino/gh_compo_io/run_subprocess.py`. See `context/CODING_STANDARDS.md`.
+> **Runtime constraint (critical):** the component code in `honeybee_revive_rhino/` runs under **IronPython 2.7** (Rhino's GHPython interpreter). Heavy compute (ADORB, pandas-based resilience) can't run in IPy2.7 — it is shelled out to CPython via `honeybee_revive_rhino/gh_compo_io/run_subprocess.py`. Apply the **ironpython-27-compatibility** skill; repo specifics in `context/CODING_STANDARDS.md`.
 
 ## What this repo is
 

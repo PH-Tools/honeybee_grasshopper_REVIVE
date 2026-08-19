@@ -7,11 +7,17 @@ STATUS: CANONICAL ENGINEERING STANDARD
 
 ## 1. IronPython 2.7 for canvas code
 
-Everything in `honeybee_revive_rhino/` that runs on the Grasshopper canvas must be Python-2.7 / IronPython-2.7 safe. (`scripts/` is CPython.)
+The generic dual-runtime rules (banned syntax and modules, comment-style type
+hints, guarded `typing` imports, defensive third-party imports, and the lint
+settings they imply) live in the **ironpython-27-compatibility** skill. Apply it
+before editing anything on the Rhino load path. Only this repo's specifics are
+recorded below.
 
-- No f-strings/`pathlib`/modern stdlib; comment-style type hints; guard `typing` imports.
-- Wrap third-party imports in `try/except` that re-raises a helpful `ImportError`.
-- **No pandas/numpy on the canvas.**
+**Zone split:** everything in `honeybee_revive_rhino/` that runs on the
+Grasshopper canvas is IPy2.7-safe. `scripts/` is CPython.
+
+No pandas or numpy on the canvas. Heavy compute is routed to CPython through
+`honeybee_revive_rhino/gh_compo_io/run_subprocess.py`; see section 2.
 
 ## 2. The subprocess boundary
 
